@@ -1,0 +1,85 @@
+#:import dp kivy.metrics.dp
+
+<StopsScreen>:
+    name: "stops"
+    BoxLayout:
+        orientation: "vertical"
+        # ---------- HEADER ----------
+        BoxLayout:
+            size_hint_y: None
+            height: "60dp"
+            padding: "10dp"
+            spacing: "10dp"
+            canvas.before:
+                Color:
+                    rgba: 0.15, 0.15, 0.18, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Button:
+                text: "< Back"
+                size_hint_x: None
+                width: "80dp"
+                background_normal: ""
+                background_color: 0.25, 0.25, 0.28, 1
+                color: 1, 1, 1, 1
+                on_release:
+                    app.root.current = "routes"
+            Label:
+                text: "Stops for Route " + root.route_id
+                font_size: "20sp"
+                bold: True
+                color: 1, 1, 1, 1
+            Button:
+                text: "Alerts"
+                size_hint_x: None
+                width: "80dp"
+                background_normal: ""
+                background_color: 1, 0.6, 0, 1
+                color: 1, 1, 1, 1
+                on_release:
+                    app.root.get_screen("alerts").previous_screen = "stops"
+                    app.root.current = "alerts"
+
+        # ---------- STOPS LIST ----------
+        RecycleView:
+            id: rv
+            viewclass: "StopItem"
+            data: [{"text": stop["name"], "stop_id": stop["stop_id"]} for stop in root.stops]
+            RecycleBoxLayout:
+                orientation: "vertical"
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(4)
+
+# ---------- STOP ITEM TEMPLATE ----------
+<StopItem@BoxLayout>:
+    orientation: "horizontal"
+    size_hint_y: None
+    height: "56dp"
+    padding: "8dp"
+    spacing: "8dp"
+
+    stop_id: ""
+    text: ""
+
+    Button:
+        text: root.text
+        font_size: "18sp"
+        background_normal: ""
+        background_color: 0.25, 0.25, 0.28, 1
+        color: 1, 1, 1, 1
+        on_release:
+            app.root.get_screen("stops").select_stop(root.stop_id)
+
+    Button:
+        text: "Map"
+        size_hint_x: None
+        width: "80dp"
+        background_normal: ""
+        background_color: 0.2, 0.5, 0.8, 1
+        color: 1, 1, 1, 1
+        on_release:
+            app.root.get_screen("stops").view_on_map({"stop_id": root.stop_id,"name": root.text})

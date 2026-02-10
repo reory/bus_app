@@ -1,0 +1,30 @@
+<ErrorPopup>:
+    size_hint: 0.85, None
+    height: "200dp"
+    auto_dismiss: True
+    background_color: 0, 0, 0, 0.4
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+        size_hint: 1, 1
+        canvas.before:
+            Color:
+                rgba: CARD_COLOR
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [12]
+
+        Label:
+            text: root.message
+            font_size: "16sp"
+            halign: "center"
+            valign: "middle"
+            text_size: self.size
+            color: ERROR_COLOR
+
+        PrimaryButton:
+            text: "OK"
+            on_release: root.dismiss()

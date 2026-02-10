@@ -1,0 +1,103 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: dp(20)
+        padding: dp(40)
+
+        TextInput:
+            hint_text: "Username"
+            text: root.username
+
+        TextInput:
+            hint_text: "Password"
+            password: True
+            text: root.password
+
+        Button:
+            text: "Login"
+            on_release: root.do_login()
+            
+<StopsScreen>:
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: "Select a Stop"
+            size_hint_y: 0.1
+
+        RecycleView:
+            id: stops_list
+            viewclass: "Button"
+            data: [
+                {
+                    "text": stop["name"],
+                    "on_release": lambda stop_id=stop["stop_id"]: root.select_stop(stop_id)
+                }
+                for stop in root.stops
+            ]
+
+        Button:
+            text: "Back"
+            size_hint_y: 0.1
+            on_release: app.root.current = "routes"
+<AlertsScreen>:
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: "Service Alerts"
+            size_hint_y: 0.1
+
+        RecycleView:
+            id: alerts_list
+            viewclass: "Button"
+            data: [
+                {
+                    "text": alert["message"],
+                    "on_release": lambda a=alert: root.select_alert(a)
+                }
+                for alert in root.alerts
+            ]
+
+        Button:
+            text: "Back"
+            size_hint_y: 0.1
+            on_release: app.root.current = "routes"
+<PredictionScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(20)
+
+        Label:
+            text: "Arrival Prediction"
+            font_size: dp(28)
+            size_hint_y: 0.2
+
+        Label:
+            text: (
+                "Route: " + root.route_id
+                if root.prediction else "Loading..."
+            )
+            font_size: dp(20)
+
+        Label:
+            text: (
+                "Stop: " + root.stop_id
+                if root.prediction else ""
+            )
+            font_size: dp(20)
+
+        Label:
+            text: (
+                "Arrival in: " + str(root.prediction.get("arrival_minutes", "")) + " minutes"
+                if root.prediction else ""
+            )
+            font_size: dp(24)
+            bold: True
+
+        Button:
+            text: "Back"
+            size_hint_y: 0.2
+            on_release: root.go_back_stops()
+

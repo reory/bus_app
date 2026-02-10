@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bus Stops Map</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
+
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { width: 100vw; height: 100vh; }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const lat = parseFloat(params.get("lat")) || 51.5074;
+    const lon = parseFloat(params.get("lon")) || -0.1278;
+    const name = params.get("name") || "Bus Stop";
+
+    const map = L.map("map").setView([lat, lon], 15);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap contributors"
+    }).addTo(map);
+
+    L.marker([lat, lon])
+      .addTo(map)
+      .bindPopup(name)
+      .openPopup();
+  </script>
+</body>
+</html>

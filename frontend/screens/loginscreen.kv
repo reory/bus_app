@@ -1,0 +1,88 @@
+<LoginScreen>:
+    name: "login"
+    
+    canvas.before:
+        Color:
+            rgba: 0.15, 0.15, 0.18, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+
+        # ---------- HEADER ----------
+        BoxLayout:
+            size_hint_y: None
+            height: "60dp"
+            padding: "10dp"
+            canvas.before:
+                Color:
+                    rgba: 0.25, 0.25, 0.28, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Bus App Login"
+                font_size: "22sp"
+                bold: True
+                color: 1, 1, 1, 1
+
+        # ---------- LOGIN FORM ----------
+        BoxLayout:
+            orientation: "vertical"
+            spacing: "15dp"
+            padding: "20dp"
+
+            Label:
+                text: "Username"
+                font_size: "16sp"
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: "30dp"
+
+            TextInput:
+                text: root.username
+                on_text: root.username = self.text
+                multiline: False
+                font_size: "18sp"
+                background_normal: ""
+                background_color: 1, 1, 1, 1
+                foreground_color: 0.1, 0.1, 0.1, 1
+                padding: "10dp"
+                size_hint_y: None
+                height: "50dp"
+
+            Label:
+                text: "Password"
+                font_size: "16sp"
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: "30dp"
+
+            TextInput:
+                text: root.password
+                on_text: root.password = self.text
+                multiline: False
+                password: True
+                font_size: "18sp"
+                background_normal: ""
+                background_color: 1, 1, 1, 1
+                foreground_color: 0.1, 0.1, 0.1, 1
+                padding: "10dp"
+                size_hint_y: None
+                height: "50dp"
+
+            Button:
+                text: "Login"
+                size_hint_y: None
+                height: "50dp"
+                font_size: "18sp"
+                background_normal: ""
+                background_color: 0.25, 0.25, 0.28, 1
+                color: 1, 1, 1, 1
+                on_release:
+                    root.do_login()

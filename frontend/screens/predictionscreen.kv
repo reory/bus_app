@@ -1,0 +1,91 @@
+#:import dp kivy.metrics.dp
+
+<PredictionScreen>:
+    name: "prediction"
+    BoxLayout:
+        orientation: "vertical"
+        # ---------- HEADER ----------
+        BoxLayout:
+            size_hint_y: None
+            height: "60dp"
+            padding: "10dp"
+            spacing: "10dp"
+            canvas.before:
+                Color:
+                    rgba: 0.15, 0.15, 0.18, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Button:
+                text: "< Back"
+                size_hint_x: None
+                width: "70dp"
+                background_normal: ""
+                background_color: 0.25, 0.25, 0.28, 1
+                color: 1, 1, 1, 1
+                on_release:
+                    root.go_back_stops()
+            Label:
+                text: "Route " + root.route_id + " • Stop " + root.stop_id
+                font_size: "18sp"
+                bold: True
+                color: 1, 1, 1, 1
+            Button:
+                text: "Alerts"
+                size_hint_x: None
+                width: "70dp"
+                background_normal: ""
+                background_color: 1, 0.6, 0, 1
+                color: 1, 1, 1, 1
+                on_release:
+                    app.root.get_screen("alerts").previous_screen = "prediction"
+                    app.root.current = "alerts"
+
+            Button:
+                text: "Refresh"
+                size_hint_x: None
+                width: "70dp"
+                background_normal: ""
+                background_color: 0.25, 0.25, 0.28, 1
+                color: 1, 1, 1, 1
+                on_release:
+                    root.load_prediction()
+        # ---------- PREDICTION CONTENT ----------
+        BoxLayout:
+            orientation: "vertical"
+            padding: "20dp"
+            spacing: "20dp"
+            # Prediction card
+            BoxLayout:
+                orientation: "vertical"
+                padding: "20dp"
+                spacing: "10dp"
+                size_hint_y: None
+                height: "180dp"
+                canvas.before:
+                    Color:
+                        rgba: 0.25, 0.25, 0.28, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: "Next Arrival"
+                    font_size: "22sp"
+                    bold: True
+                    color: 1, 1, 1, 1
+                Label:
+                    text: root.prediction.get("arrival_time", "—") if root.prediction else "Loading..."
+                    font_size: "48sp"
+                    bold: True
+                    color: 0.3, 1, 0.3, 1
+                Label:
+                    text: root.prediction.get("status", "")
+                    font_size: "18sp"
+                    color: 1, 1, 1, 1
+            # Additional info
+            Label:
+                text: "Next after that: " + root.prediction.get("next_arrival", "—") if root.prediction else ""
+                font_size: "16sp"
+                color: 1, 1, 1, 1
+                halign: "center"
+                valign: "middle"

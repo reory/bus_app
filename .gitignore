@@ -1,0 +1,61 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Virtual Environment ---
+# This is crucial since your tree shows the venv/ folder
+venv/
+ENV/
+.venv/
+
+# --- Django ---
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+instance/
+.webassets-cache
+.env
+.secrets
+static/
+media/
+
+# --- Celery ---
+# Celery beat schedule file
+celerybeat-schedule
+celerybeat-schedule.db
+
+# --- Kivy / Frontend ---
+# Kivy sometimes generates logs or local config
+.kivy/
+*.log
+
+# --- OS / IDEs ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.bak
+
+# --- Tools ---
+# If your tools generate temporary output
+tools/*.tmp

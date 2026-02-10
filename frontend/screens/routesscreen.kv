@@ -1,0 +1,74 @@
+#:import dp kivy.metrics.dp
+
+<RoutesScreen>:
+    on_kv_post:
+        print("RoutesScreen KV applied successfully!")
+   
+    BoxLayout:
+        orientation: "vertical"
+
+        # ---------- HEADER ----------
+        BoxLayout:
+            size_hint_y: None
+            height: "60dp"
+            padding: "10dp"
+            spacing: "10dp"
+            canvas.before:
+                Color:
+                    rgba: 0.15, 0.15, 0.18, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Button:
+                text: "< Back"
+                size_hint_x: None
+                width: "80dp"
+                on_release:
+                    app.root.current = "login"
+
+            Label:
+                text: "Select Route"
+                font_size: "22sp"
+                bold: True
+                color: 1, 1, 1, 1
+
+            Button:
+                text: "Alerts"
+                size_hint_x: None
+                width: "80dp"
+                background_normal: ""
+                background_color: 1, 0.6, 0, 1
+                color: 1, 1, 1, 1
+                on_release:
+                    app.root.get_screen("alerts").previous_screen = "routes"
+                    app.root.current = "alerts"
+
+        # ---------- ROUTES LIST ----------
+        RecycleView:
+            id: rv
+            viewclass: "RouteItem"
+            data: root.rv_data
+
+            RecycleBoxLayout:
+                orientation: "vertical"
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(4)
+
+
+# ---------- ROUTE ITEM TEMPLATE ----------
+<RouteItem@Button>:
+    text: ""
+    route_id: ""
+    size_hint_y: None
+    height: "56dp"
+    font_size: "18sp"
+    background_normal: ""
+    background_color: 0.25, 0.25, 0.28, 1
+    color: 1, 1, 1, 1
+
+    on_release:
+        app.root.get_screen("routes").select_route(self.route_id)

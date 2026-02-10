@@ -1,0 +1,89 @@
+#:import dp kivy.metrics.dp
+
+<AlertsScreen>:
+    name: "alerts"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        # ---------- HEADER ----------
+        BoxLayout:
+            size_hint_y: None
+            height: "60dp"
+            padding: "10dp"
+            spacing: "10dp"
+            canvas.before:
+                Color:
+                    rgba: 0.25, 0.25, 0.28, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Button:
+                text: "< Back"
+                size_hint_x: None
+                width: "90dp"
+                background_normal: ""
+                background_color: 0.25, 0.25, 0.28, 1
+                color: 1, 1, 1, 1
+                on_release:
+                    root.go_back()
+
+            Label:
+                text: "Service Alerts"
+                font_size: "22sp"
+                bold: True
+                color: 1, 1, 1, 1
+
+        # ---------- ALERT LIST ----------
+        RecycleView:
+            id: alerts_rv
+            viewclass: "AlertItem"
+            data: [{"title": alert["title"], "description": alert["description"], "severity": alert["severity"]} for alert in root.alerts]
+
+            RecycleBoxLayout:
+                default_size: None, dp(100)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: "vertical"
+                spacing: dp(10)
+                padding: dp(10)
+
+
+# ---------- ALERT ITEM TEMPLATE ----------
+<AlertItem>:
+    orientation: "vertical"
+    padding: "15dp"
+    spacing: "8dp"
+    size_hint_y: None
+    height: "100dp"
+
+    canvas.before:
+        Color:
+            rgba: (1, 0.95, 0.8, 1) if self.severity == "warning" else (0.9, 0.95, 1, 1)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [8]
+
+    Label:
+        text: root.title
+        font_size: "18sp"
+        bold: True
+        color: 0.1, 0.1, 0.1, 1
+        text_size: self.width, None
+        size_hint_y: None
+        height: self.texture_size[1]
+        halign: "left"
+        valign: "top"
+
+    Label:
+        text: root.description
+        font_size: "14sp"
+        color: 0.2, 0.2, 0.2, 1
+        text_size: self.width, None
+        size_hint_y: None
+        height: self.texture_size[1]
+        halign: "left"
+        valign: "top"

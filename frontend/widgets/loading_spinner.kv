@@ -1,0 +1,19 @@
+<LoadingOverlay>:
+    size_hint: 1, 1
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    orientation: "vertical"
+    padding: "20dp"
+    spacing: "20dp"
+    opacity: 1 if root.active else 0
+    disabled: not root.active
+
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 0.4 if root.active else 0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Spinner:
+        size_hint: None, None
+        size: "60dp", "60dp"

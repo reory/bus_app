@@ -1,0 +1,33 @@
+#:import MapPin widgets.map_pin.MapPin
+
+<MapScreen>:
+    BoxLayout:
+        orientation: "vertical"
+
+        # Top bar
+        BoxLayout:
+            size_hint_y: None
+            height: "48dp"
+            padding: "8dp"
+
+            Button:
+                text: "Back"
+                size_hint_x: None
+                width: "80dp"
+                on_release: root.go_back()
+
+            Label:
+                text: root.stop_name
+                halign: "left"
+                valign: "middle"
+                text_size: self.size
+
+        FloatLayout:
+            id: map_container
+
+            Image:
+                id: map_image
+                allow_stretch: True
+                keep_ratio: True
+                size_hint: 1, 1
+                pos_hint: {"x": 0, "y": 0}

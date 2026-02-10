@@ -1,0 +1,111 @@
+# ============================
+# GLOBAL COLOR PALETTE
+# ============================
+
+#:set PRIMARY_COLOR 0.30, 0.50, 1.00, 1
+#:set BG_COLOR 0.15, 0.15, 0.18, 1
+#:set CARD_COLOR 0.25, 0.25, 0.28, 1
+#:set TEXT_COLOR 1, 1, 1, 1
+#:set MUTED_TEXT 0.70, 0.70, 0.70, 1
+#:set SUCCESS_COLOR 0.30, 1.00, 0.30, 1
+#:set ERROR_COLOR 1.00, 0.40, 0.40, 1
+
+# ============================
+# TYPOGRAPHY
+# ============================
+
+#:set FONT_REGULAR "assets/fonts/Inter-Regular.ttf"
+#:set FONT_BOLD "assets/fonts/Inter-Bold.ttf"
+
+<Label>:
+    font_name: FONT_REGULAR
+    color: TEXT_COLOR
+
+<HeaderLabel@Label>:
+    font_name: FONT_BOLD
+    font_size: "22sp"
+    color: TEXT_COLOR
+
+<TitleLabel@Label>:
+    font_name: FONT_BOLD
+    font_size: "18sp"
+    color: TEXT_COLOR
+
+<BodyLabel@Label>:
+    font_size: "16sp"
+    color: TEXT_COLOR
+
+<MutedLabel@Label>:
+    font_size: "14sp"
+    color: MUTED_TEXT
+
+# ============================
+# BUTTON STYLES
+# ============================
+
+<PrimaryButton@Button>:
+    background_normal: ""
+    background_color: PRIMARY_COLOR
+    color: TEXT_COLOR
+    font_size: "18sp"
+    height: "50dp"
+    size_hint_y: None
+    font_name: FONT_BOLD
+
+<SecondaryButton@Button>:
+    background_normal: ""
+    background_color: CARD_COLOR
+    color: TEXT_COLOR
+    font_size: "16sp"
+    height: "46dp"
+    size_hint_y: None
+
+<IconButton@Button>:
+    background_normal: ""
+    background_color: (0, 0, 0, 0)
+    color: TEXT_COLOR
+    size_hint: None, None
+    size: "40dp", "40dp"
+
+# ============================
+# CARD STYLE
+# ============================
+
+<Card@BoxLayout>:
+    padding: "16dp"
+    spacing: "10dp"
+    size_hint_y: None
+    height: self.minimum_height
+    canvas.before:
+        Color:
+            rgba: CARD_COLOR
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [10]
+
+# ============================
+# TEXT INPUT STYLE
+# ============================
+
+<TextInput>:
+    background_normal: ""
+    background_color: CARD_COLOR
+    foreground_color: TEXT_COLOR
+    cursor_color: PRIMARY_COLOR
+    padding: "10dp"
+    font_size: "18sp"
+    font_name: FONT_REGULAR
+
+# ============================
+# GLOBAL BACKGROUND
+# ============================
+
+<Screen>:
+    canvas.before:
+        Color:
+            rgba: BG_COLOR
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
