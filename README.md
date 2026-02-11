@@ -4,6 +4,19 @@ A full-stack transit app featuring a  Django REST framework and a Multi-threaded
 
 ---
 
+## 📱 App Gallery
+
+<p align="center">
+  <img src="screenshots/alerts_screen.png" width="250" alt="Alert Screen">
+  <img src="screenshots/login_screen.png" width="250" alt="Login Screen">
+  <img src="screenshots/maps_screen.png" width="250" alt="Maps Screen">
+  <img src="screenshots/prediction_screen.png" width="250" alt="Prediction Screen">
+  <img src="screenshots/select_route_screen.png" width="250" alt="Routes Screen">
+  <img src="screenshots/stops_screen.png" width="250" alt="Stops Screen">
+</p>
+
+---
+
 ## 🚀 Features
 
 * **17/17 Passing Unit Tests**✅ 
