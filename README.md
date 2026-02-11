@@ -8,6 +8,8 @@
 
 A full-stack transit app featuring a  Django REST framework and a Multi-threaded Kivy mobile interface.
 
+A Reliable transit apps require robust front-end logic. I built this UK Bus Tracker (v1) as a Proof of Concept to demonstrate a mobile-ready UI (Kivy) capable of processing transit data. To ensure a consistent demo experience without API rate-limiting, v1 utilizes a mocked data engine that simulates real-world bus arrivals.
+
 ---
 
 ## 📱 App Gallery
