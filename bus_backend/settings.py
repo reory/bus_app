@@ -3,7 +3,7 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-GTFS_PATH = r"C:/Users/Admin/Desktop/gtfs_sample.zip"
+GTFS_PATH = BASE_DIR / 'data' / 'gtfs_sample.zip'
 
 CELERY_WORKER_POOL = "solo"
 
