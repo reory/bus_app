@@ -4,8 +4,8 @@ from kivy.clock import Clock
 from kivy.uix.button import Button
 import threading
 
-from frontend.services.api import get_routes
-from frontend.widgets.error_popup import ErrorPopup
+from services.api import get_routes
+from widgets.error_popup import ErrorPopup
 
 
 class RoutesScreen(Screen):
