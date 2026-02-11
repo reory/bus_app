@@ -1,5 +1,11 @@
 # Bus Tracker
 
+![Python Version](https://img.shields.io/badge/python-3.11-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Repo Size](https://img.shields.io/github/repo-size/reory/bus_app)
+![Last Commit](https://img.shields.io/github/last-commit/reory/bus_app)
+![Tests](https://img.shields.io/badge/tests-17%20passing-brightgreen)
+
 A full-stack transit app featuring a  Django REST framework and a Multi-threaded Kivy mobile interface.
 
 ---
