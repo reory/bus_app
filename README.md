@@ -28,7 +28,7 @@ A Reliable transit apps require robust front-end logic. I built this UK Bus Trac
 ## 🚀 Features
 
 * **17/17 Passing Unit Tests**✅ 
-* **Real-time API Integration** 
+* **Mocked Time** - (Proof of concept)
 * **Multi-threaded Kivy UI**
 * **Django REST Framework Backend** (Scalable app structure)
 
