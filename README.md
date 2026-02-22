@@ -107,3 +107,5 @@ pytest
 - Version 1.0 Initial release. 
 - 17 passing unit tests. 
 - Ensure the Django backend is running before starting the Kivy frontend.
+
+**Built By Roy Peters** [Click here for contact details 😁](https://www.linkedin.com/in/roy-p-74980b382/)
