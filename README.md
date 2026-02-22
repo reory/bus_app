@@ -38,7 +38,7 @@ A Reliable transit apps require robust front-end logic. I built this UK Bus Trac
 
 1. **Clone the repository and install:**
 ```bash
-git clone <add-later>
+git clone https://github.com/reory/bus_app.git
 cd bus_app
 pip install -r requirements.txt
 python manage.py migrate
