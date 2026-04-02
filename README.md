@@ -6,13 +6,18 @@
 ![Last Commit](https://img.shields.io/github/last-commit/reory/bus_app)
 ![Tests](https://img.shields.io/badge/tests-17%20passing-brightgreen)
 
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Kivy](https://img.shields.io/badge/Kivy-3776AB?style=for-the-badge&logo=kivy&logoColor=white)
+![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=for-the-badge)
+
 A full-stack transit app featuring a  Django REST framework and a Multi-threaded Kivy mobile interface.
 
 A Reliable transit apps require robust front-end logic. I built this UK Bus Tracker (v1) as a Proof of Concept to demonstrate a mobile-ready UI (Kivy) capable of processing transit data. To ensure a consistent demo experience without API rate-limiting, v1 utilizes a mocked data engine that simulates real-world bus arrivals.
 
 ---
 
-## 📱 App Gallery
+<details>
+  <summary>📱 App Gallery</summary>
 
 <p align="center">
   <img src="screenshots/alerts_screen.png" width="250" alt="Alert Screen">
@@ -23,6 +28,7 @@ A Reliable transit apps require robust front-end logic. I built this UK Bus Trac
   <img src="screenshots/stops_screen.png" width="250" alt="Stops Screen">
 </p>
 
+</details>
 ---
 
 ## 🚀 Features
