@@ -1,9 +1,9 @@
 # Contributing to Bus Tracker
 
-First off, thank you for considering contributing to the Bus Tracker project! It's people like you who make this a great tool for the community.
+First off, thank you for considering contributing to the Bus Tracker project!
 
-## 🚦 Our "Golden Rule"
-**All 17 existing unit tests must pass** before a Pull Request can be considered. We take stability seriously!
+## 🚦 "Golden Rule"
+**All 17 existing unit tests must pass** before a Pull Request can be considered.
 
 ---
 
