@@ -12,8 +12,8 @@ from screens.alerts_screen import AlertsScreen
 from screens.map_screen import MapScreen
 
 # Import for kivy class registration.
-from screens.routes_screen import RouteItem
-from screens.alerts_screen import AlertItem
+from screens.routes_screen import RouteItem     # noqa - Python linter does not understand Kivy lang 
+from screens.alerts_screen import AlertItem     # noqa
 
 class BusApp(App):
     """Root Kivy application class."""

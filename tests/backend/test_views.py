@@ -1,5 +1,4 @@
 import pytest
-from django.urls import reverse
 from rest_framework.test import APIClient
 from api.models import Route, Stop, Alert
 import time
@@ -31,7 +30,7 @@ class TestViews:
         Stop.objects.create(stop_id="S1", name="Target Stop", route=r1)
         Stop.objects.create(stop_id="S2", name="Wrong Route Stop", route=r2)
         
-        url = f"/api/routes/R1/stops/"
+        url = "/api/routes/R1/stops/"
         response = api_client.get(url)
         
         assert response.status_code == 200

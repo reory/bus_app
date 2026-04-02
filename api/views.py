@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 # Standard JSON response wrapper.
 from rest_framework.response import Response
 # Import the database models.
-from .models import Route, Stop, Alert
+from .models import Route, Alert
 # Serializers convert models to JSON.
 from .serializers import (RouteSerializer, StopSerializer, AlertSerializer)
 # Random module to simulate randomness in bus arrival times.

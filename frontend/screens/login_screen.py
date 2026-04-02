@@ -2,9 +2,9 @@ from kivy.uix.screenmanager import Screen
 # Reactive text value that updates the UI automatically.
 from kivy.properties import StringProperty
 from widgets.error_popup import ErrorPopup
-from kivy.uix.label import Label
-from kivy.lang import Builder
-import os 
+from kivy.uix.label import Label     # noqa            
+from kivy.lang import Builder        # noqa          
+import os                            # noqa            
 
 class LoginScreen(Screen):
     """UI screen for handling user login flow."""
