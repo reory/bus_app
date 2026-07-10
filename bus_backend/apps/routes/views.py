@@ -24,7 +24,8 @@ class StopListView(generics.ListAPIView):
         route_id = self.request.query_params.get("route_id")
 
         if route_id:
-            # Filter stops by the selected route (avoid duplication)
-            return Stop.objects.filter(trip__route__route_id=route_id).distinct()
+            # Filter stops by walking through the 
+            # StopTime bridge model to reach the Trip and Route
+            return Stop.objects.filter(stoptime__trip__route__route_id=route_id).distinct()
         # No filter applied - return all the stops.
         return Stop.objects.all()

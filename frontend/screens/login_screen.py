@@ -4,7 +4,7 @@ from kivy.properties import StringProperty
 from widgets.error_popup import ErrorPopup
 from kivy.uix.label import Label     # noqa            
 from kivy.lang import Builder        # noqa          
-import os                            # noqa            
+import os                            # noqa           
 
 class LoginScreen(Screen):
     """UI screen for handling user login flow."""

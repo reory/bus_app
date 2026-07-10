@@ -58,7 +58,7 @@ Thumbs.db
 
 # --- Tools ---
 # If your tools generate temporary output
-tools/*.tmp
+tools/
 
 # redis database not needed on github.
 dump.rdb

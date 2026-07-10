@@ -3,21 +3,22 @@ from kivy.uix.screenmanager import Screen
 from widgets.map_pin import MapPin
 from utils.constants import STOP_POSITIONS
 
-class MapScreen(Screen):
 
+class MapScreen(Screen):
     stop_id = ""
     stop_name = ""
 
     def on_pre_enter(self):
+        """Run setup tasks just before the screen becomes visible."""
 
         image = self.ids.map_image
         image.source = ""
-        
+
         path = Path(f"assets/maps/{self.stop_id}.png")
 
         if path.exists():
             self.ids.map_image.source = str(path)
-        else: 
+        else:
             self.ids.map_image.source = "assets/maps/default.png"
 
         image.reload()
@@ -34,17 +35,16 @@ class MapScreen(Screen):
 
         # Add a test pin on top of the image.
         pin = MapPin(
-            source ="assets/maps/pin.png",
+            source="assets/maps/pin.png",
             size_hint=(None, None),
             size=(48, 48),
             pos_hint=pos,
-            stop_id=self.stop_id
+            stop_id=self.stop_id,
         )
-        
+
         # Add pin to the map.
         self.ids.map_container.add_widget(pin)
 
     def go_back(self):
         # Go back to the stops screen.
         self.manager.current = "stops"
-

@@ -5,8 +5,10 @@ from kivy.uix.label import Label
 from kivy.properties import StringProperty
 from utils.constants import STOP_NAMES
 
+
 class MapPin(ButtonBehavior, Image):
-    
+    """Interactive map marker that behaves like a button and displays an image."""
+
     stop_id = StringProperty("")
 
     def on_release(self):
@@ -16,7 +18,7 @@ class MapPin(ButtonBehavior, Image):
         popup = Popup(
             title="Bus Stop",
             content=Label(text=stop_name, font_size=20),
-            size_hint=(0.6, 0.3)
+            size_hint=(0.6, 0.3),
         )
 
         popup.open()
