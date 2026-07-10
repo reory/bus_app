@@ -81,7 +81,7 @@ bus_app/
 │   │   └── users/        # Custom user models & auth
 │   └── settings.py       # Global configuration
 ├── frontend/             # Kivy Mobile Application
-├── tests/                # 17 Unit tests (Backend & Frontend)
+├── tests/                # 26 Unit tests (Backend & Frontend)
 ├── manage.py             # Django management script
 └── main.py               # Kivy entry point
 ```
