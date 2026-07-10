@@ -143,7 +143,7 @@ The Tech: Build a "Favorites" schema allowing users to pin specific stop IDs dir
 
 ## Notes
 - Version 1.0 Initial release. 
-- 17 passing unit tests. 
+- 26 passing unit tests. 
 - Ensure the Django backend is running before starting the Kivy frontend.
 
 **Built By Roy Peters** [Click here for contact details 😁](https://www.linkedin.com/in/roy-p-74980b382/)
