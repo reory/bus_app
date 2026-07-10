@@ -1,4 +1,4 @@
-# Bus Tracker
+# 🚍 Bus App
 
 ![Python Version](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -8,7 +8,7 @@
 
 ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![Kivy](https://img.shields.io/badge/Kivy-3776AB?style=for-the-badge&logo=kivy&logoColor=white)
-![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=for-the-badge)
+
 
 A full-stack transit app featuring a  Django REST framework and a Multi-threaded Kivy mobile interface.
 
@@ -33,7 +33,7 @@ A Reliable transit apps require robust front-end logic. I built this UK Bus Trac
 
 ## 🚀 Features
 
-* **17/17 Passing Unit Tests**✅ 
+* **26/26 Passing Unit Tests**✅ 
 * **Mocked Time** - (Proof of concept)
 * **Multi-threaded Kivy UI**
 * **Django REST Framework Backend** (Scalable app structure)
@@ -106,6 +106,38 @@ pytest
 - Kivy (UI Framework)
 - Pytest (Testing)
 - Celery (Task scheduling)
+
+---
+
+## 🛣️ Roadmap Features
+
+- [ ] Live GTFS-Realtime Ingestion
+The Goal: Swap mock data for live transit feeds.
+The Tech: Deploy a Django background worker to pull and decode Protocol Buffer (.pb) vehicle streams every 30 seconds.
+
+- [ ] Synthetic GTFS Generator (Faker)
+The Goal: Build a localized data factory to simulate a bustling city transit network.
+The Tech: Use `faker`.providers.address to generate realistic street name bus stops (e.g., "Main St & 4th Ave") and clamp random lat/long coordinates within a tight boundary to simulate a dense downtown core.
+
+- [ ] Rust-Powered Schedule Matrix Compiler
+The Goal: Generate millions of realistic, connected schedule times without melting your CPU.
+The Tech: Pass your synthetic `faker` stop lists into a `Rust` + `PyO3` extension. Let `Rust` handle the heavy loop calculations to instantly generate sequential arrival and departure times (StopTime rows) for thousands of simulated trips.
+
+- [ ] Multi-Stop Journey Planner
+The Goal: Give the app actual point-A to point-B routing capabilities.
+The Tech: Implement pathfinding algorithms (like Dijkstra’s or Connection Scan) on the backend to calculate the fastest multi-stop trips.
+
+- [ ] Offline Spatial Caching
+The Goal: Keep the app functional when cellular data drops out.
+The Tech: Embed a lightweight `SQLite` cache on the `Kivy` client to store and render route shapes and stop layouts completely offline.
+
+- [ ] WebSocket Push Alerts
+The Goal: Notify riders of sudden route delays instantly.
+The Tech: Use `Django` Channels to maintain live WebSocket connections, pushing urgent service disruptions directly to the `Kivy` UI.
+
+- [ ] Personalized Dashboards
+The Goal: Let users see their daily commute countdown immediately.
+The Tech: Build a "Favorites" schema allowing users to pin specific stop IDs directly to the launch screen, skipping the route menus entirely.
 
 ---
 
