@@ -111,10 +111,6 @@ pytest
 
 ## 🛣️ Roadmap Features
 
-- [ ] Live GTFS-Realtime Ingestion
-The Goal: Swap mock data for live transit feeds.
-The Tech: Deploy a Django background worker to pull and decode Protocol Buffer (.pb) vehicle streams every 30 seconds.
-
 - [ ] Synthetic GTFS Generator (Faker)
 The Goal: Build a localized data factory to simulate a bustling city transit network.
 The Tech: Use `faker`.providers.address to generate realistic street name bus stops (e.g., "Main St & 4th Ave") and clamp random lat/long coordinates within a tight boundary to simulate a dense downtown core.
