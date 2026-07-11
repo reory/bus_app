@@ -1,4 +1,5 @@
 from pathlib import Path
+import random
 from kivy.uix.screenmanager import Screen
 from widgets.map_pin import MapPin
 from utils.constants import STOP_POSITIONS
@@ -31,7 +32,19 @@ class MapScreen(Screen):
         # re-add the map image first.
         self.ids.map_container.add_widget(image)
 
-        pos = STOP_POSITIONS.get(self.stop_id, {"x": 0.5, "y": 0.5})
+        if self.stop_id in STOP_POSITIONS:
+            # Use the real-world coordinate if it exists
+            pos = STOP_POSITIONS[self.stop_id]
+        else:
+            random.seed(self.stop_id)
+            
+            # Generate a fixed fractional position, keeping it away from the extreme edges
+            pos ={
+                "x": random.uniform(0.15, 0.85),
+                "y": random.uniform(0.15, 0.85)
+            }
+
+            random.seed()
 
         # Add a test pin on top of the image.
         pin = MapPin(

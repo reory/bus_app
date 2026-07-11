@@ -8,6 +8,7 @@
 
 ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![Kivy](https://img.shields.io/badge/Kivy-3776AB?style=for-the-badge&logo=kivy&logoColor=white)
+![Faker](https://img.shields.io/badge/Faker-Data_Generation-ff69b4?style=flat-square)
 
 
 A full-stack transit app featuring a  Django REST framework and a Multi-threaded Kivy mobile interface.
@@ -62,6 +63,7 @@ This project requires both the backend and frontend to be running simultaneously
     ```
 
 2. **Start the frontend:**
+  cd frontend
    ```bash
    python main.py
    ```
@@ -111,7 +113,7 @@ pytest
 
 ## 🛣️ Roadmap Features
 
-- [ ] Synthetic GTFS Generator (Faker)
+- [x] Synthetic GTFS Generator (Faker)
 The Goal: Build a localized data factory to simulate a bustling city transit network.
 The Tech: Use `faker`.providers.address to generate realistic street name bus stops (e.g., "Main St & 4th Ave") and clamp random lat/long coordinates within a tight boundary to simulate a dense downtown core.
 

@@ -1,9 +1,9 @@
 from django.urls import path
 
+from bus_backend.apps.routes.views import RouteListView, StopListView
+
 # Import the API views.
 from .views import(
-    RouteListView,
-    StopListView,
     PredictionView,
     AlertListView
 )

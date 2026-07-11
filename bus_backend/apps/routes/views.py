@@ -20,12 +20,16 @@ class StopListView(generics.ListAPIView):
     def get_queryset(self):
         """Override to provide custom filtering logic."""
         
-        # Read optional route filter from query string.
-        route_id = self.request.query_params.get("route_id")
+        # First, look for route_id in the URL path parameters 
+        route_id = self.kwargs.get("route_id")
+
+        if not route_id:
+            route_id = self.request.query_params.get("route_id")
 
         if route_id:
             # Filter stops by walking through the 
             # StopTime bridge model to reach the Trip and Route
             return Stop.objects.filter(stoptime__trip__route__route_id=route_id).distinct()
+
         # No filter applied - return all the stops.
         return Stop.objects.all()
