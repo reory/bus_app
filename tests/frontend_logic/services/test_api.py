@@ -1,5 +1,4 @@
 import sys
-import os
 from pathlib import Path
 
 # Force the bus_app root into the path.
@@ -9,7 +8,9 @@ sys.path.insert(0, str(root))
 import pytest
 import respx
 from httpx import Response
-from frontend.services.api import get_routes, get_prediction, BASE_URL
+
+from frontend.services.api import BASE_URL, get_prediction, get_routes
+
 
 @pytest.mark.asyncio
 @respx.mock

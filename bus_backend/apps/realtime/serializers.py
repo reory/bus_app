@@ -1,5 +1,7 @@
 from rest_framework import serializers
+
 from .models import Prediction
+
 
 class PredictionSerializer(serializers.ModelSerializer):
     """Serializer for Prediction model data."""

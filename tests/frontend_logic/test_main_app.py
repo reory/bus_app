@@ -1,5 +1,5 @@
 import sys
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
 # Inject mock modules into sys.modules to safely intercept top-level screens imports
 mock_login = MagicMock()

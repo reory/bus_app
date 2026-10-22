@@ -1,8 +1,8 @@
-from kivy.uix.screenmanager import Screen
-from kivy.properties import StringProperty, ListProperty
-from kivy.clock import Clock
 import threading
 
+from kivy.clock import Clock
+from kivy.properties import ListProperty, StringProperty
+from kivy.uix.screenmanager import Screen
 from services.api import get_stops
 from widgets.error_popup import ErrorPopup
 
@@ -45,7 +45,7 @@ class StopsScreen(Screen):
                 loop.close()
 
                 print(f"StopsScreen: Fetched data: {data}")
-            except Exception as e:
+            except Exception as e: #noqa Error caught successfully
                 print(f"StopsScreen: Error loading stops: {e}")
                 data = None
 

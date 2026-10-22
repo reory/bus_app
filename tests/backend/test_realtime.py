@@ -1,11 +1,10 @@
+# Directly import the urls module to sweep its routing definitions into 100% coverage
+import bus_backend.apps.realtime.urls  #noqa
 import pytest
-from rest_framework.test import APIRequestFactory
-from bus_backend.apps.routes.models import Route, Stop
 from bus_backend.apps.realtime.models import Prediction
 from bus_backend.apps.realtime.views import get_predictions
-
-# Directly import the urls module to sweep its routing definitions into 100% coverage
-import bus_backend.apps.realtime.urls #noqa
+from bus_backend.apps.routes.models import Route, Stop
+from rest_framework.test import APIRequestFactory
 
 
 @pytest.mark.django_db

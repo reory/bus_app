@@ -1,7 +1,7 @@
 import pytest
 
 # Updated import to match your bus_backend/apps/routes/ structure
-from api.models import Route, Stop, Alert
+from api.models import Alert, Route, Stop
 
 
 @pytest.mark.django_db

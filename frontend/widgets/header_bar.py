@@ -1,5 +1,6 @@
+from kivy.properties import BooleanProperty, ObjectProperty, StringProperty
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import StringProperty, BooleanProperty, ObjectProperty
+
 
 class HeaderBar(BoxLayout):
     """

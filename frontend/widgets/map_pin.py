@@ -1,8 +1,8 @@
-from kivy.uix.image import Image
-from kivy.uix.behaviors import ButtonBehavior
-from kivy.uix.popup import Popup
-from kivy.uix.label import Label
 from kivy.properties import StringProperty
+from kivy.uix.behaviors import ButtonBehavior
+from kivy.uix.image import Image
+from kivy.uix.label import Label
+from kivy.uix.popup import Popup
 from utils.constants import STOP_NAMES
 
 

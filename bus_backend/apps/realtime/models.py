@@ -1,5 +1,7 @@
 from django.db import models
-from bus_backend.apps.routes.models import Stop, Route
+
+from bus_backend.apps.routes.models import Route, Stop
+
 
 class VehiclePosition(models.Model):
     """Live location data for a vehicle on a route."""

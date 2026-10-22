@@ -1,19 +1,25 @@
-from kivy.app import App
-from kivy.uix.screenmanager import ScreenManager
-from kivy.lang import Builder
 import os
+
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager
+from screens.alerts_screen import (
+    AlertItem,  # noqa
+    AlertsScreen,
+)
 
 # Import screen classes
 from screens.login_screen import LoginScreen
-from screens.routes_screen import RoutesScreen
-from screens.stops_screen import StopsScreen
-from screens.prediction_screen import PredictionScreen
-from screens.alerts_screen import AlertsScreen
 from screens.map_screen import MapScreen
+from screens.prediction_screen import PredictionScreen
 
 # Import for kivy class registration.
-from screens.routes_screen import RouteItem     # noqa
-from screens.alerts_screen import AlertItem     # noqa
+from screens.routes_screen import (
+    RouteItem,  # noqa
+    RoutesScreen,
+)
+from screens.stops_screen import StopsScreen
+
 
 class BusApp(App):
     """Root Kivy application class."""

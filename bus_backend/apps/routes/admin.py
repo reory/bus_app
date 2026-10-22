@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Route, Stop, Trip, StopTime
+
+from .models import Route, Stop, StopTime, Trip
 
 admin.site.register(Route)
 admin.site.register(Stop)

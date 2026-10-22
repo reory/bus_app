@@ -1,8 +1,10 @@
-import pytest
 import time
+
+import pytest
 from rest_framework.test import APIClient
+
 from api.models import Alert
-from bus_backend.apps.routes.models import Route, Stop, Trip, StopTime
+from bus_backend.apps.routes.models import Route, Stop, StopTime, Trip
 
 
 @pytest.fixture

@@ -1,18 +1,18 @@
 # Base class for building API endpoints.
-from rest_framework.views import APIView
+# Random module to simulate randomness in bus arrival times.
+import random
 
 # Standard JSON response wrapper.
 from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from api.models import Stop as APIStop
 
 # Import the database models.
-from .models import Route, Alert
+from .models import Alert, Route
 
 # Serializers convert models to JSON.
-from .serializers import RouteSerializer, StopSerializer, AlertSerializer
-
-# Random module to simulate randomness in bus arrival times.
-import random
-from api.models import Stop as APIStop
+from .serializers import AlertSerializer, RouteSerializer, StopSerializer
 
 """
 API views read from projection models only.

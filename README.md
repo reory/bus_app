@@ -117,13 +117,9 @@ pytest
 The Goal: Build a localized data factory to simulate a bustling city transit network.
 The Tech: Use `faker`.providers.address to generate realistic street name bus stops (e.g., "Main St & 4th Ave") and clamp random lat/long coordinates within a tight boundary to simulate a dense downtown core.
 
-- [ ] Rust-Powered Schedule Matrix Compiler
-The Goal: Generate millions of realistic, connected schedule times without melting your CPU.
-The Tech: Pass your synthetic `faker` stop lists into a `Rust` + `PyO3` extension. Let `Rust` handle the heavy loop calculations to instantly generate sequential arrival and departure times (StopTime rows) for thousands of simulated trips.
-
-- [ ] Multi-Stop Journey Planner
-The Goal: Give the app actual point-A to point-B routing capabilities.
-The Tech: Implement pathfinding algorithms (like Dijkstra’s or Connection Scan) on the backend to calculate the fastest multi-stop trips.
+- [ ] Personalized Dashboards
+The Goal: Let users see their daily commute countdown immediately.
+The Tech: Build a "Favorites" schema allowing users to pin specific stop IDs directly to the launch screen, skipping the route menus entirely.
 
 - [ ] Offline Spatial Caching
 The Goal: Keep the app functional when cellular data drops out.
@@ -133,9 +129,13 @@ The Tech: Embed a lightweight `SQLite` cache on the `Kivy` client to store and r
 The Goal: Notify riders of sudden route delays instantly.
 The Tech: Use `Django` Channels to maintain live WebSocket connections, pushing urgent service disruptions directly to the `Kivy` UI.
 
-- [ ] Personalized Dashboards
-The Goal: Let users see their daily commute countdown immediately.
-The Tech: Build a "Favorites" schema allowing users to pin specific stop IDs directly to the launch screen, skipping the route menus entirely.
+- [ ] Multi-Stop Journey Planner
+The Goal: Give the app actual point-A to point-B routing capabilities.
+The Tech: Implement pathfinding algorithms (like Dijkstra’s or Connection Scan) on the backend to calculate the fastest multi-stop trips.
+
+- [ ] Rust-Powered Schedule Matrix Compiler
+The Goal: Generate millions of realistic, connected schedule times without melting your CPU.
+The Tech: Pass your synthetic `faker` stop lists into a `Rust` + `PyO3` extension. Let `Rust` handle the heavy loop calculations to instantly generate sequential arrival and departure times (StopTime rows) for thousands of simulated trips.
 
 ---
 

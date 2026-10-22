@@ -1,9 +1,10 @@
-from django.core.management.base import BaseCommand
-from django.conf import settings
 import csv
 import os
 
-from bus_backend.apps.routes.models import Route, Stop, Trip, StopTime
+from django.conf import settings
+from django.core.management.base import BaseCommand
+
+from bus_backend.apps.routes.models import Route, Stop, StopTime, Trip
 
 
 class Command(BaseCommand):

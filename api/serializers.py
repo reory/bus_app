@@ -3,8 +3,9 @@
 
 # Convert data into JSON friendly formats.
 from rest_framework import serializers
+
 # Import all the database models this API will expose.
-from .models import Route, Stop, Alert
+from .models import Alert, Route, Stop
 
 
 class RouteSerializer(serializers.ModelSerializer):
@@ -15,12 +16,12 @@ class RouteSerializer(serializers.ModelSerializer):
         # The model this serializer represents.
         model = Route
         # Only expose the route ID and the text to the front end.
-        fields = ["route_id", "text", "short_name", "long_name"]
+        fields = ("route_id", "text", "short_name", "long_name")
 
 class StopSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stop
-        fields = ["stop_id", "name"]
+        fields = ("stop_id", "name")
 
 class AlertSerializer(serializers.ModelSerializer):
 
@@ -30,7 +31,7 @@ class AlertSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Alert
-        fields = ["title", "description", "severity"]
+        fields = ("title", "description", "severity")
 
     def get_title(self, obj):
         return "Service Alert"

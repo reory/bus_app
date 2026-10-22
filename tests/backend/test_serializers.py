@@ -1,6 +1,7 @@
 import pytest
-from api.models import Route, Stop, Alert
-from api.serializers import RouteSerializer, StopSerializer, AlertSerializer
+
+from api.models import Alert, Route, Stop
+from api.serializers import AlertSerializer, RouteSerializer, StopSerializer
 
 
 @pytest.mark.django_db

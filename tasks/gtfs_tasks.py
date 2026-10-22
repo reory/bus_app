@@ -1,9 +1,12 @@
-import zipfile
 import csv
+import zipfile
+
 from celery import shared_task
 from django.db import transaction
-from bus_backend.apps.routes.models import Route, Stop, Trip, StopTime
-from api.models import Route as ApiRoute, Stop as ApiStop
+
+from api.models import Route as ApiRoute
+from api.models import Stop as ApiStop
+from bus_backend.apps.routes.models import Route, Stop, StopTime, Trip
 
 
 @shared_task

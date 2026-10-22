@@ -3,10 +3,7 @@ from django.urls import path
 from bus_backend.apps.routes.views import RouteListView, StopListView
 
 # Import the API views.
-from .views import(
-    PredictionView,
-    AlertListView
-)
+from .views import AlertListView, PredictionView
 
 # URL patterns for all API endpoints in this app.
 urlpatterns = [

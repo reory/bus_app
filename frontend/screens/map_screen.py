@@ -1,8 +1,9 @@
-from pathlib import Path
 import random
+from pathlib import Path
+
 from kivy.uix.screenmanager import Screen
-from widgets.map_pin import MapPin
 from utils.constants import STOP_POSITIONS
+from widgets.map_pin import MapPin
 
 
 class MapScreen(Screen):

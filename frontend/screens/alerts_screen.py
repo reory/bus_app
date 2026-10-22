@@ -1,9 +1,9 @@
-from kivy.uix.screenmanager import Screen
-from kivy.properties import ListProperty, StringProperty
-from kivy.uix.boxlayout import BoxLayout
-from kivy.clock import Clock
 import threading
 
+from kivy.clock import Clock
+from kivy.properties import ListProperty, StringProperty
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import Screen
 from services.api import get_alerts
 from widgets.error_popup import ErrorPopup
 
@@ -39,7 +39,7 @@ class AlertsScreen(Screen):
                 loop.close()
 
                 print(f"AlertsScreen: Fetched data: {data}")
-            except Exception as e:
+            except Exception as e: #noqa
                 print(f"AlertsScreen: Error loading alerts: {e}")
                 data = None
 

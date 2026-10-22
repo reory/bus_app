@@ -1,6 +1,7 @@
-from django.db import models
 # Access the active user model (supports customization of fields too.)
 from django.contrib.auth import get_user_model
+from django.db import models
+
 from bus_backend.apps.routes.models import Route
 
 # Reference the custom User model.

@@ -1,6 +1,8 @@
 # Django RestFramework tool for building API serializers.
 from rest_framework import serializers
+
 from .models import Route, Stop, Trip
+
 
 class RouteSerializer(serializers.ModelSerializer):
     """Serializes Route model for API responses."""

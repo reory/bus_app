@@ -1,7 +1,8 @@
-import pytest
-from unittest.mock import patch, MagicMock
-from kivy.clock import Clock
 import time
+from unittest.mock import MagicMock, patch
+
+import pytest
+from kivy.clock import Clock
 
 from frontend.screens.routes_screen import RoutesScreen
 

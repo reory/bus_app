@@ -1,8 +1,10 @@
 import random
-from faker import Faker
-from django.core.management.base import BaseCommand
-from bus_backend.apps.routes.models import Route, Stop, Trip, StopTime
 from datetime import time
+
+from django.core.management.base import BaseCommand
+from faker import Faker
+
+from bus_backend.apps.routes.models import Route, Stop, StopTime, Trip
 
 fake = Faker()
 

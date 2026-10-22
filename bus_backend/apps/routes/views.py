@@ -1,6 +1,8 @@
 from rest_framework import generics
+
 from .models import Route, Stop
 from .serializers import RouteSerializer, StopSerializer
+
 
 class RouteListView(generics.ListAPIView):
     """API endpoint for listing all routes."""

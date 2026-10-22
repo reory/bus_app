@@ -1,11 +1,12 @@
-from kivy.uix.screenmanager import Screen
-from kivy.properties import ListProperty, StringProperty
-from kivy.clock import Clock
-from kivy.uix.button import Button
 import threading
 
-from services.api import get_routes
-from widgets.error_popup import ErrorPopup
+from kivy.clock import Clock
+from kivy.properties import ListProperty, StringProperty
+from kivy.uix.button import Button
+from kivy.uix.screenmanager import Screen
+
+from frontend.services.api import get_routes
+from frontend.widgets.error_popup import ErrorPopup
 
 
 class RoutesScreen(Screen):
@@ -61,7 +62,7 @@ class RoutesScreen(Screen):
 
                 # Schedule UI update on main thread
                 Clock.schedule_once(lambda dt: self.update_routes(data), 0)
-            except Exception as e:
+            except Exception as e: #noqa
                 print(f"Error loading routes: {e}")
                 Clock.schedule_once(
                     lambda dt: self.show_error(

@@ -1,12 +1,13 @@
-import pytest
-from rest_framework.test import APIRequestFactory
-from bus_backend.apps.routes.models import Route, Stop, Trip, StopTime
-from bus_backend.apps.routes.views import RouteListView, StopListView
-from bus_backend.apps.routes.serializers import TripSerializer
 import datetime
 
+import pytest
+from rest_framework.test import APIRequestFactory
+
 # Directly import the urls module to sweep its routing definitions into 100% coverage
-import bus_backend.apps.routes.urls #noqa
+import bus_backend.apps.routes.urls  #noqa
+from bus_backend.apps.routes.models import Route, Stop, StopTime, Trip
+from bus_backend.apps.routes.serializers import TripSerializer
+from bus_backend.apps.routes.views import RouteListView, StopListView
 
 
 @pytest.mark.django_db

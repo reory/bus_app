@@ -1,6 +1,10 @@
 from django.core.management.base import BaseCommand
-from bus_backend.apps.routes.models import Route as GTFSRoute, Stop as GTFSStop, Trip, StopTime
-from api.models import Route as APIRoute, Stop as APIStop
+
+from api.models import Route as APIRoute
+from api.models import Stop as APIStop
+from bus_backend.apps.routes.models import Route as GTFSRoute
+from bus_backend.apps.routes.models import StopTime
+
 
 class Command(BaseCommand):
     help = "Sync GTFS data into the API models."

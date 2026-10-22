@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Route(models.Model):
     """
     Stores key identifiers and metadata so trips and realtime data
@@ -70,7 +71,7 @@ class StopTime(models.Model):
 
     class Meta:
         # Ensures correct stop order.
-        ordering = ["stop_sequence"]
+        ordering = ["stop_sequence"] #noqa
 
     def __str__(self):
         """Readable representation for admin and debugging."""

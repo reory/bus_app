@@ -1,8 +1,8 @@
-from kivy.uix.screenmanager import Screen
-from kivy.properties import StringProperty, DictProperty
-from kivy.clock import Clock
 import threading
 
+from kivy.clock import Clock
+from kivy.properties import DictProperty, StringProperty
+from kivy.uix.screenmanager import Screen
 from services.api import get_prediction
 from widgets.error_popup import ErrorPopup
 
@@ -50,7 +50,7 @@ class PredictionScreen(Screen):
                 loop.close()
 
                 print(f"PredictionScreen: Fetched data: {data}")
-            except Exception as e:
+            except Exception as e: #noqa
                 print(f"PredictionScreen: Error loading prediction: {e}")
                 data = None
 
