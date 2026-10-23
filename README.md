@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Repo Size](https://img.shields.io/github/repo-size/reory/bus_app)
 ![Last Commit](https://img.shields.io/github/last-commit/reory/bus_app)
-![Tests](https://img.shields.io/badge/tests-26%20passing-brightgreen)
+![Tests](https://img.shields.io/badge/tests-30%20passing-brightgreen)
 
 ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![Kivy](https://img.shields.io/badge/Kivy-3776AB?style=for-the-badge&logo=kivy&logoColor=white)
