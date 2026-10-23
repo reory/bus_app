@@ -179,7 +179,7 @@ The Tech: Pass your synthetic `faker` stop lists into a `Rust` + `PyO3` extensio
 ---
 
 ## Notes
-- Version 1.2 release. 
+- Version 1.3 release. 
 - 30 passing unit tests.
 - Ensure the Django backend is running before starting the Kivy frontend.
 
