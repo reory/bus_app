@@ -1,6 +1,4 @@
-import os  # noqa           
-
-from kivy.lang import Builder  # noqa          
+from kivy.lang import Builder  # noqa       
 
 # Reactive text value that updates the UI automatically.
 from kivy.properties import StringProperty
@@ -18,6 +16,8 @@ class LoginScreen(Screen):
     password = StringProperty("")
 
     def on_enter(self):
+        """Handles actions when the login screen becomes active and enters a view."""
+
         print("LoginScreen: loaded!")
 
     def do_login(self):
@@ -28,6 +28,8 @@ class LoginScreen(Screen):
         self.manager.current = "routes"
 
     def show_error(self, message: str):
+        """Display an error message modal popup to the user."""
+
         popup = ErrorPopup(message=message)
         popup.open()
 

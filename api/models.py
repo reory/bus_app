@@ -37,7 +37,7 @@ class Stop(models.Model):
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
-        ordering = ("order")
+        ordering = ("order",)
 
 class Alert(models.Model):
     

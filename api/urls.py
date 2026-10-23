@@ -1,9 +1,12 @@
 from django.urls import path
 
-from bus_backend.apps.routes.views import RouteListView, StopListView
+from bus_backend.apps.routes.views import (
+    RouteListView,
+    StopListView,
+)
 
 # Import the API views.
-from .views import AlertListView, PredictionView
+from .views import AlertListView, PredictionView, UserFavouriteListView
 
 # URL patterns for all API endpoints in this app.
 urlpatterns = [
@@ -19,4 +22,5 @@ urlpatterns = [
     ),
     # Returns all alerts.
     path("alerts/", AlertListView.as_view(), name="alert-list"),
+    path("favourites/", UserFavouriteListView.as_view(), name="user-favourites"),
 ]

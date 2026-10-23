@@ -44,6 +44,55 @@
                     app.root.get_screen("alerts").previous_screen = "routes"
                     app.root.current = "alerts"
 
+        # ---------- PERSONALIZED DASHBOARD (FAVOURITES) ----------
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: "110dp"
+            padding: "6dp"
+            spacing: "2dp"
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.2, 0.23, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Pinned Commutes"
+                font_size: "14sp"
+                bold: True
+                size_hint_y: None
+                height: "20dp"
+                halign: "left"
+                valign: "middle"
+                text_size: self.size
+
+            # Option B: Helper label shown when list is empty
+            Label:
+                text: "No pinned commutes yet. Add stops from route details!"
+                font_size: "13sp"
+                color: 0.7, 0.7, 0.7, 1
+                size_hint_y: None
+                height: "25dp"
+                opacity: 1 if not root.favourites else 0
+                halign: "left"
+                valign: "middle"
+                text_size: self.size
+
+            RecycleView:
+                id: favourites_rv
+                viewclass: "FavouriteItem"
+                data: root.favourites
+
+                RecycleBoxLayout:
+                    orientation: "horizontal"
+                    default_size: None, dp(65)
+                    default_size_hint: None, 1
+                    size_hint_x: None
+                    width: self.minimum_width
+                    spacing: dp(6)
+
         # ---------- ROUTES LIST ----------
         RecycleView:
             id: rv
@@ -72,3 +121,19 @@
 
     on_release:
         app.root.get_screen("routes").select_route(self.route_id)
+
+
+# ---------- FAVOURITE ITEM TEMPLATE ----------
+<FavouriteItem@Button>:
+    text: f"{root.nickname}\nID: {root.stop_id}"
+    size_hint_x: None
+    width: "135dp"
+    background_normal: ""
+    background_color: 0.3, 0.5, 0.8, 1
+    color: 1, 1, 1, 1
+    font_size: "12sp"
+    halign: "center"
+    valign: "middle"
+    text_size: self.width - dp(10), self.height - dp(10)
+    on_release:
+        app.root.get_screen("routes").select_favourite(root)

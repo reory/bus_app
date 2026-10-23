@@ -64,3 +64,4 @@ tools/
 
 # redis database not needed on github.
 dump.rdb
+project_notes.txt

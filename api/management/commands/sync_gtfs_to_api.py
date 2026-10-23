@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 from api.models import Route as APIRoute
 from api.models import Stop as APIStop
 from bus_backend.apps.routes.models import Route as GTFSRoute
-from bus_backend.apps.routes.models import StopTime
+from bus_backend.apps.routes.models import StopTime, Trip
 
 
 class Command(BaseCommand):
@@ -24,40 +24,37 @@ class Command(BaseCommand):
         # Loop through GTFS routes.
         for route in GTFSRoute.objects.all():
             APIRoute.objects.create(
-            route_id=route.route_id,
-            short_name=route.short_name,
-            long_name=route.long_name,
-        )
+                route_id=route.route_id,
+                short_name=route.short_name,
+                long_name=route.long_name,
+            )
 
     def sync_stops(self):
 
         # Clear existing API stops.
         APIStop.objects.all().delete()
         
-        processed_routes = set()
-
-        stop_times = (
-             StopTime.objects
-             .select_related("trip", "stop","trip__route")
-             .order_by("trip__route__route_id", "stop_sequence")
-        )
-
-        for st in stop_times:
-            route_id = st.trip.route.route_id
-
-            # Only process the first trip per route.
-            if route_id in processed_routes:
+        # Iterate through routes, pick one representative trip, and sync its stops in sequence
+        for route in GTFSRoute.objects.all():
+            first_trip = Trip.objects.filter(route=route).first()
+            if not first_trip:
                 continue
 
-            APIStop.objects.create(
-                # Use GTFS route_id as API ID.
-                stop_id=st.stop.stop_id,
-                # Human readable name.
-                name=st.stop.name,
-                # Link to the correct route.
-                route_id=route_id,
-                # Link to the correct stop order of the route.
-                order=st.stop_sequence
+            route_stop_times = (
+                StopTime.objects
+                .filter(trip=first_trip)
+                .select_related("stop")
+                .order_by("stop_sequence")
             )
             
-            processed_routes.add(route_id)
+            for st in route_stop_times:
+                APIStop.objects.create(
+                    # Use GTFS route_id as API ID.
+                    stop_id=st.stop.stop_id,
+                    # Human readable name.
+                    name=st.stop.name,
+                    # Link to the correct route.
+                    route_id=route.route_id,
+                    # Link to the correct stop order of the route.
+                    order=st.stop_sequence
+                )

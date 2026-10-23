@@ -106,3 +106,31 @@ class TestViews:
         response = api_client.get(url)
 
         assert response.data[0]["description"] == "New Alert"
+
+    def test_user_favourites_get_and_post(self, api_client):
+        """Test listing and creating user favourites via the API."""
+        from bus_backend.apps.users.models import User, UserFavourite
+
+        user = User.objects.create_user(username="busapp35", password="password")
+        UserFavourite.objects.create(
+            user=user, stop_id="S102", route_id="1", nickname="Work"
+        )
+
+        # Test GET request filtered by username
+        response = api_client.get("/api/favourites/?username=busapp35")
+        assert response.status_code == 200
+        assert len(response.data) == 1
+        assert response.data[0]["nickname"] == "Work"
+        assert response.data[0]["stop_id"] == "S102"
+
+        # Test POST request to add a new favourite
+        payload = {
+            "username": "busapp35",
+            "stop_id": "S105",
+            "route_id": "2",
+            "nickname": "Gym"
+        }
+        post_response = api_client.post("/api/favourites/", payload, format="json")
+        assert post_response.status_code == 201
+        assert post_response.data["nickname"] == "Gym"
+        assert UserFavourite.objects.filter(stop_id="S105").exists()

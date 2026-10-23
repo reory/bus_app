@@ -18,6 +18,7 @@ class AlertsScreen(Screen):
 
     def on_pre_enter(self):
         """Called automatically when the screen is about to be shown."""
+
         print(
             f"AlertsScreen: on_pre_enter called, came from: {self.previous_screen}"
         )
@@ -25,9 +26,12 @@ class AlertsScreen(Screen):
 
     def load_alerts(self):
         """Start loading alerts in a background thread."""
+
         print("AlertsScreen: load_alerts called")
 
         def fetch_data():
+            """Retrieve data from the configured source."""
+
             data = None
             try:
                 import asyncio
@@ -75,24 +79,33 @@ class AlertsScreen(Screen):
 
     def update_alerts(self, data):
         """Update UI with fetched alerts (runs on main thread)."""
+
         print(f"AlertsScreen: update_alerts called with {len(data)} alerts")
         self.alerts = data
 
     def go_back(self):
         """Return to the previous screen."""
+
         print(f"AlertsScreen: Going back to {self.previous_screen}")
         self.manager.current = self.previous_screen
 
     def select_alert(self, alert):
         """Called when a user taps an alert."""
+
         print(f"AlertsScreen: Selected alert: {alert}")
 
     def show_error(self, message: str):
+        """Display an error message modal popup to the user."""
+
         popup = ErrorPopup(message=message)
         popup.open()
 
 
 class AlertItem(BoxLayout):
+    """A custom layout component representing an 
+    individual transit service alert notification.
+    """
+
     title = StringProperty("")
     description = StringProperty("")
     severity = StringProperty("info")

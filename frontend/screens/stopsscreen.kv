@@ -75,6 +75,16 @@
             app.root.get_screen("stops").select_stop(root.stop_id)
 
     Button:
+        text: "Pin"
+        size_hint_x: None
+        width: "70dp"
+        background_normal: ""
+        background_color: 0.8, 0.6, 0.2, 1
+        color: 1, 1, 1, 1
+        on_release:
+            app.root.get_screen("stops").pin_stop(root.stop_id, root.text)
+
+    Button:
         text: "Map"
         size_hint_x: None
         width: "80dp"

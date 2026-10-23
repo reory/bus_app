@@ -12,6 +12,9 @@ class MapPin(ButtonBehavior, Image):
     stop_id = StringProperty("")
 
     def on_release(self):
+        """Handle button release events to display a 
+        popup containing the selected bus stop name.
+        """
 
         stop_name = STOP_NAMES.get(self.stop_id, self.stop_id)
 

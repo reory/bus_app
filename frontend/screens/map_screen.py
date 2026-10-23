@@ -7,6 +7,8 @@ from widgets.map_pin import MapPin
 
 
 class MapScreen(Screen):
+    """The application screen displaying interactive transit maps and routes."""
+
     stop_id = ""
     stop_name = ""
 
@@ -60,5 +62,7 @@ class MapScreen(Screen):
         self.ids.map_container.add_widget(pin)
 
     def go_back(self):
+        """Return to the stops screen via the screen manager."""
+
         # Go back to the stops screen.
         self.manager.current = "stops"

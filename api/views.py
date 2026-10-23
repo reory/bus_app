@@ -7,17 +7,51 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from api.models import Stop as APIStop
+from bus_backend.apps.users.models import User, UserFavourite
 
 # Import the database models.
 from .models import Alert, Route
 
 # Serializers convert models to JSON.
-from .serializers import AlertSerializer, RouteSerializer, StopSerializer
+from .serializers import (
+    AlertSerializer,
+    RouteSerializer,
+    StopSerializer,
+    UserFavouriteSerializer,
+)
 
 """
 API views read from projection models only.
 GTFS truth is never queried directly from this layer.
 """
+
+
+class UserFavouriteListView(APIView):
+    """Handles listing and creating user favourite pinned stops."""
+
+    def get(self, request):
+
+        username = request.query_params.get("username", "admin")
+        favourites = UserFavourite.objects.filter(user__username=username)
+        serializer = UserFavouriteSerializer(favourites, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+
+        username = request.data.get("username", "admin35")
+        user, _ = User.objects.get_or_create(username=username)
+
+        # Check if already favourited to prevent duplicates
+        stop_id = request.data.get("stop_id")
+        if UserFavourite.objects.filter(user=user, stop_id=stop_id).exists():
+            return Response({"detail": "Stop already favourited."}, status=400)
+
+
+        serializer = UserFavouriteSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=user)
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
 
 
 class RouteListView(APIView):

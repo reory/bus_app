@@ -7,9 +7,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-GTFS_PATH = os.getenv('GTFS_PATH', BASE_DIR / 'data' / 'gtfs_sample.zip')
-
-CELERY_WORKER_POOL = "solo"
+GTFS_PATH = Path(os.getenv('GTFS_PATH', BASE_DIR / 'gtfs_sample.zip'))
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-key-for-dev-only')
 DEBUG = True
@@ -88,10 +86,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Celery
-CELERY_BROKER_URL = "redis://localhost:6379/0"
-CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
 
 # to be updated later with info.
 CORS_ALLOW_ALL_ORIGINS = True

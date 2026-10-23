@@ -3,7 +3,7 @@ import threading
 from kivy.clock import Clock
 from kivy.properties import ListProperty, StringProperty
 from kivy.uix.screenmanager import Screen
-from services.api import get_stops
+from services.api import add_favourite, get_stops
 from widgets.error_popup import ErrorPopup
 
 
@@ -21,6 +21,37 @@ class StopsScreen(Screen):
 
         print(f"StopsScreen: on_pre_enter called with route_id={self.route_id}")
         Clock.schedule_once(lambda dt: self.load_stops(), 0)
+
+    def pin_stop(self, stop_id, stop_name):
+        """Pin the selected stop as a favourite via background thread."""
+        
+        print(f"StopsScreen: Pinning stop {stop_id} ({stop_name})")
+
+        def do_pin():
+            """
+            Pin the selected stop as a favourite via background 
+            thread without changing screens.
+            """
+
+            try:
+                import asyncio
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                loop.run_until_complete(
+                    add_favourite(
+                        stop_id=stop_id, 
+                        route_id=self.route_id, 
+                        nickname=stop_name, 
+                        username="busapp35"
+                    )
+                )
+                loop.close()
+                print("StopsScreen: Stop successfully pinned!")
+            except Exception as e: #noqa
+                print(f"StopsScreen: Error pinning stop: {e}")
+
+        threading.Thread(target=do_pin, daemon=True).start()
+
 
     def load_stops(self):
         """Start loading stops in a background thread."""

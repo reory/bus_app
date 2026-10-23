@@ -9,21 +9,22 @@ import pytest
 import respx
 from httpx import Response
 
-from frontend.services.api import BASE_URL, get_prediction, get_routes
+from frontend.services.api import BASE_URL, get_favourites, get_prediction, get_routes
 
 
 @pytest.mark.asyncio
 @respx.mock
 async def test_get_routes_success():
     """Verify get_routes calls the correct URL and returns JSON."""
-    # 1. Mock the backend response
+
+    # Mock the backend response
     route_data = [{"route_id": "1", "text": "Route 1"}]
     respx.get(f"{BASE_URL}/api/routes/").mock(return_value=Response(200, json=route_data))
 
-    # 2. Call the frontend service
+    # Call the frontend service
     result = await get_routes()
 
-    # 3. Assertions
+    # Assertions
     assert result == route_data
     assert len(result) == 1
     assert result[0]["route_id"] == "1"
@@ -32,6 +33,7 @@ async def test_get_routes_success():
 @respx.mock
 async def test_get_prediction_format():
     """Verify prediction service handles the route/stop URL parameters."""
+
     stop_id = "S123"
     route_id = "R55"
     mock_response = {"arrival_time": "5 min", "status": "On time"}
@@ -48,6 +50,7 @@ async def test_get_prediction_format():
 @respx.mock
 async def test_api_error_handling():
     """Test what happens if the Django server is down (500 error)."""
+
     respx.get(f"{BASE_URL}/api/alerts/").mock(return_value=Response(500))
 
     # Since you use r.raise_for_status(), it should raise an exception
@@ -55,3 +58,22 @@ async def test_api_error_handling():
     with pytest.raises(HTTPStatusError):
         from frontend.services.api import get_alerts
         await get_alerts()
+
+@pytest.mark.asyncio
+@respx.mock
+async def test_get_favourites_success():
+    """
+    Verify get_favourites calls the correct URL with username 
+    parameter and returns JSON.
+    """
+
+    fav_data = [{"id": 1, "stop_id": "S102", "route_id": "1", "nickname": "Work"}]
+    respx.get(f"{BASE_URL}/api/favourites/?username=busapp35").mock(
+        return_value=Response(200, json=fav_data)
+    )
+
+    result = await get_favourites("busapp35")
+
+    assert result == fav_data
+    assert len(result) == 1
+    assert result[0]["nickname"] == "Work"

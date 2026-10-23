@@ -1,7 +1,6 @@
 import csv
 import zipfile
 
-from celery import shared_task
 from django.db import transaction
 
 from api.models import Route as ApiRoute
@@ -9,7 +8,6 @@ from api.models import Stop as ApiStop
 from bus_backend.apps.routes.models import Route, Stop, StopTime, Trip
 
 
-@shared_task
 def import_gtfs_static(zip_path):
     """Load GTFS static data from a zip file into the database."""
 
@@ -89,7 +87,6 @@ def import_gtfs_static(zip_path):
     return "GTFS static import completed"
 
 
-@shared_task
 def project_gtfs_to_api(limit_stops=50):
     """
     Project GTFS truth models into simplified API models

@@ -1,10 +1,11 @@
 # These serializers convert database objects into clean JSON responses for
 # Kivy to interpret.
 
-# Convert data into JSON friendly formats.
+
 from rest_framework import serializers
 
-# Import all the database models this API will expose.
+from bus_backend.apps.users.models import UserFavourite
+
 from .models import Alert, Route, Stop
 
 
@@ -38,3 +39,9 @@ class AlertSerializer(serializers.ModelSerializer):
     
     def get_severity(self, obj):
         return "info"
+
+class UserFavouriteSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserFavourite
+        fields = ("id", "stop_id", "route_id", "nickname", "created_at")

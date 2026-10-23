@@ -1,0 +1,5 @@
+[tool.ruff]
+# Exclude auto-generated Django migration files from being linted!
+exclude = [
+    "**/migrations/*.py",
+]
